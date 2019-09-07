@@ -32,7 +32,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                    "Obiefy\\API\\APIServiceProvide"
+                    "Obiefy\\API\\APIServiceProvider"
             ]
         }
     }
