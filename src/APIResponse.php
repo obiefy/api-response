@@ -3,7 +3,6 @@
 
 namespace Obiefy\API;
 
-
 use Illuminate\Http\JsonResponse;
 
 class APIResponse

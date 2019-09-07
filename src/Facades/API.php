@@ -1,6 +1,6 @@
 <?php
 
-namespace Obiefy\API\Facade;
+namespace Obiefy\API\Facades;
 
 
 use Illuminate\Support\Facades\Facade;

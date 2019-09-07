@@ -17,7 +17,10 @@
     "autoload-dev": {
         "psr-4": {
             "Obiefy\\API\\Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "minimum-stability": "stable",
     "require": {
