@@ -58,7 +58,7 @@ public function index()
 
 
 ## Contributing
-I will be happy if see PR from you.
+I will be happy if I see PR from you.
 
 ## License
 
