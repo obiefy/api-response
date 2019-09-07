@@ -50,10 +50,12 @@ class ResponseTest extends OrchestraTestCase {
     /** @test */
     public function user_can_edit_default_response_keys()
     {
-        config()->set('api.keys.status', 'newStatus');
-        config()->set('api.keys.message', 'newMessage');
-        config()->set('api.keys.data', 'newData');
-
+        config()->set('api.keys', [
+            'status' => 'newStatus',
+            'message' => 'newMessage',
+            'data' => 'newData'
+        ]);
+        
         $response = api()->ok()->getContent();
         $expectedResponse = [
             'newStatus' => 200,
