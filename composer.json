@@ -1,6 +1,6 @@
 {
     "name": "obiefy/api-response",
-    "description": "PHP package for standard formats for API resposones",
+    "description": "PHP package for standard formats for API responses",
     "require-dev": {
         "phpunit/phpunit": "^8.3"
     },
