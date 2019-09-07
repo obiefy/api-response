@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\API;
+namespace Obiefy\API;
 
 
 use Illuminate\Http\JsonResponse;

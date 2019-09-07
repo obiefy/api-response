@@ -1,9 +1,6 @@
 <?php
 
-
-namespace App\API;
-
-
+namespace Obiefy\API;
 use Illuminate\Support\ServiceProvider;
 
 class APIServiceProvider extends ServiceProvider {

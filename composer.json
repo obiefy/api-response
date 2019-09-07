@@ -1,9 +1,7 @@
 {
     "name": "obiefy/api-response",
     "description": "PHP package for standard formats for API responses",
-    "require-dev": {
-        "phpunit/phpunit": "^8.3"
-    },
+
     "license": "MIT",
     "authors": [
         {
@@ -11,6 +9,28 @@
             "email": "obayhamed@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Obiefy\\API\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Obiefy\\API\\Tests\\": "tests/"
+        }
+    },
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "php" : "^7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                    "Obiefy\\API\\APIServiceProvide"
+            ]
+        }
+    }
 }
