@@ -46,21 +46,17 @@ class APIResponse
     }
 
     /**
+     * @param string $message
      * @return JsonResponse
      */
-    public function notFound()
+    public function notFound($message = '')
     {
-        return $this->response(404, __('general.404'), []);
-    }
-
-    /**
-     * @param $message
-     * @return JsonResponse
-     */
-    public function notFoundWithMessage($message)
-    {
+        if(empty($message)){
+            $message = config('api.messages.404');
+        }
         return $this->response(404, $message, []);
     }
+
 
     /**
      * @param $errors

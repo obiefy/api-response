@@ -55,8 +55,9 @@ class ResponseTest extends OrchestraTestCase {
             'message' => 'newMessage',
             'data' => 'newData'
         ]);
-        
+
         $response = api()->ok()->getContent();
+
         $expectedResponse = [
             'newStatus' => 200,
             'newMessage' => '',
@@ -64,4 +65,30 @@ class ResponseTest extends OrchestraTestCase {
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
+
+    /** @test */
+    public function it_returned_404_response()
+    {
+        $response = api()->notFound('No results for your query')->getContent();
+        $expectedResponse = [
+            'MESSAGE' => 'No results for your query',
+            'STATUS' => 404,
+            "DATA" => []
+        ];
+        $this->assertEquals($expectedResponse, json_decode($response, 1));
+    }
+
+    /** @test */
+    public function it_returned_404_response_with_default_config_message()
+    {
+        $response = api()->notFound()->getContent();
+        $expectedResponse = [
+            'MESSAGE' => config('api.messages.404'),
+            'STATUS' => 404,
+            "DATA" => []
+        ];
+        $this->assertEquals($expectedResponse, json_decode($response, 1));
+    }
+
+    // TODO (3 test): test validation errors, default message validation, serer error response
 }
