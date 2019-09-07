@@ -14,6 +14,10 @@ Simple and ready to use API response wrapper for Laravel.
 1. Install package `composer require obiedy/api-response`.
 2. It is auto discovered by Laravel.
 
+## Usage
+
+1. Install package `composer require obiedy/api-response`.
+2. It is auto discovered by Laravel.
 
 ## Contributing
 I will be happy if see PR from you.
