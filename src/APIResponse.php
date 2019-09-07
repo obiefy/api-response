@@ -8,6 +8,17 @@ use Illuminate\Http\JsonResponse;
 class APIResponse
 {
 
+    protected $statusLabel;
+    protected $messageLabel;
+    protected $dataLabel;
+
+    public function __construct()
+    {
+        $this->statusLabel = config('api.keys.status');
+        $this->messageLabel = config('api.keys.message');
+        $this->dataLabel = config('api.keys.data');
+    }
+
     /**
      * @param $status
      * @param $message
@@ -17,19 +28,10 @@ class APIResponse
     public function response($status, $message, $data)
     {
         return response()->json([
-            'STATUS' => strval($status),
-            'MESSAGE' => $message,
-            'DATA' => $data
+            $this->statusLabel => strval($status),
+            $this->messageLabel => $message,
+            $this->dataLabel => $data
         ]);
-    }
-
-    /**
-     * @param $data
-     * @return JsonResponse
-     */
-    public function okWithoutMessage($data)
-    {
-        return $this->ok('No message', $data);
     }
 
 
@@ -38,7 +40,7 @@ class APIResponse
      * @param $data
      * @return JsonResponse
      */
-    public function ok($message, $data)
+    public function ok($message = '', $data = [])
     {
         return $this->response(200, $message, $data);
     }

@@ -11,4 +11,15 @@ class APIServiceProvider extends ServiceProvider {
             return new APIResponse();
         });
     }
+
+    public function boot()
+    {
+        $this->setConfig();
+    }
+
+    protected function setConfig()
+    {
+        $path =  realpath($raw = __DIR__.'/config/api.php') ?: $raw;
+        $this->mergeConfigFrom($path, 'api');
+    }
 }
