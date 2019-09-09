@@ -23,11 +23,20 @@ class NotFoundResponseTest extends TestCase{
     {
         $response = api()->notFound()->getContent();
         $expectedResponse = [
-            'MESSAGE' => config('api.messages.404'),
+            'MESSAGE' => config('api.messages.notfound'),
             'STATUS' => 404,
             "DATA" => []
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
+    }
+
+    /** @test */
+    public function user_can_change_default_notfound_status_code()
+    {
+        config()->set('api.codes.notfound', 406);
+        $response = api()->notFound()->getContent();
+
+        $this->assertEquals(406, json_decode($response, 1)['STATUS']);
     }
 
 
