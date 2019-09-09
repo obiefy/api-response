@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('api')){
+//if (! function_exists('api')){
     /**
      * Create a new APIResponse instance.
      *
@@ -18,4 +18,4 @@ if (! function_exists('api')){
 
         return app('api')->response($status, $message, $data);
     }
-}
+//}
