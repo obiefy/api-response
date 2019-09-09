@@ -16,7 +16,7 @@ Simple Laravel API response wrapper.
 ## Basic usage
 Create and return JSON response:
 ```php
-use Obiefy\Facades\API;
+use Obiefy\API\Facades\API;
 ...
 public function index()
 {
@@ -29,7 +29,7 @@ public function index()
 Or you can use helper function:
 
 ```php
-use Obiefy\Facades\API;
+use Obiefy\API\Facades\API;
 ...
 public function index()
 {
@@ -45,7 +45,7 @@ public function index()
 ####  1. General example
 
 ```php
-use Obiefy\Facades\API;
+use Obiefy\API\Facades\API;
 ...
 public function index()
 {
