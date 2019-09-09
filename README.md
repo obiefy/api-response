@@ -1,27 +1,20 @@
 # Laravel API Response
-[![Build Status](https://travis-ci.org/obiefy/api-response.svg?branch=master)](https://travis-ci.org/obiefy/api-response)
- ![Packagist](https://img.shields.io/packagist/l/obiefy/api-response) ![Packagist Version](https://img.shields.io/packagist/v/obiefy/api-response)
 
-Simple and ready to use API response wrapper for Laravel.
+![Build Status](https://travis-ci.org/obiefy/api-response.svg?branch=master) ![Packagist](https://img.shields.io/packagist/l/obiefy/api-response) ![Packagist Version](https://img.shields.io/packagist/v/obiefy/api-response)
 
-## Features
+Simple Laravel API response wrapper.
 
-* Simple use `return api()->ok();`
-* Configurable so you can make it custom.
+---
 
+## Installation
+1. Install package through composer:
+`$ composer require obiefy/api-response`
 
-## Installation and Usage
+2. publish config file :
+`php artisan vendor:publish --tag=api-response`
 
-First you need to install package through compose 
-
-```$ composer require obiefy/api-response```
-
-move config file using command
-
-`php artisan vendor:publish --provider="Obiefy/API/APIServiceProvider"`
-
-## How to use
-1. General example
+## Basic usage
+Create and return JSON response:
 ```php
 use Obiefy\Facades\API;
 ...
@@ -29,10 +22,39 @@ public function index()
 {
     $users = User::all();
     
-    return API::ok('users list', $users);
+    return API::response(200,'users list', $users);
 }
 ```
-this returned this json response:
+
+Or you can use helper function:
+
+```php
+use Obiefy\Facades\API;
+...
+public function index()
+{
+    $users = User::all();
+    
+    return api()->response(200, 'users list', $users);
+}
+```
+
+
+## Advanced usage
+
+####  1. General example
+
+```php
+use Obiefy\Facades\API;
+...
+public function index()
+{
+    $users = User::all();
+    
+    return API::response(200, 'users list', $users);
+}
+```
+result:
 ```json
 {
     "STATUS": 200,
@@ -42,20 +64,32 @@ this returned this json response:
     ]
 }
 ```
-
-2. you can also return response using helper function
+#### 2. Success response
 ```php
-public function index()
+return api()->ok('Success message`, [
+	'name' => 'Obay Hamed'
+]);
+```
+result:
+```json
 {
-    $users = User::all();
-    
-    return api()->ok('users list', $users);
+    "STATUS": 200,
+    "MESSAGE": "Success message",
+    "DATA": {"name": "Obay Hamed"}
 }
 ```
+you can also return success message with out passing parametters
+```php
+return api()->ok();
+```
+in this case response message will be the default message from config file `config('api.messages.success')` the same thing for `api()->notFound()` and `api()->validation()`.
 
-3. empty OK message `api()->ok()` will return response with status 200 and no message.
-4. 404 not found message `api()->notFount('No query result')` will return response with status 404.
-4. 404 with default 404 message `api()->notFount()` will return response with status 404 with default message from `config('api.messages.404')` and you can override it.
+|method| default status code  | change code |  message  |   
+|--|--| -- | --- |
+|`ok()`|  200 |`config('api.codes.success)` | `config('api.messages.success)`
+|`notFound()`|  404 |`config('api.codes.notfound)` | `config('api.messages.notfound)`
+|`validation()`|  402 |`config('api.codes.validation)` | `config('api.messages.validation)`
+
 
 
 ## Contributing
@@ -63,4 +97,4 @@ I will be happy if I see PR from you.
 
 ## License
 
-The API Response is free package released under the MIT License.
+The API Response is a free package released under the MIT License.
