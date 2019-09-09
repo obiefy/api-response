@@ -1,50 +1,18 @@
 <?php
 namespace Obiefy\Tests;
-use Obiefy\API\APIServiceProvider;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Arr;
 use Obiefy\API\Facades\API;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
-class ResponseTest extends OrchestraTestCase {
+use Obiefy\API\Tests\TestCase;
+use phpDocumentor\Reflection\Types\Array_;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->app->register(APIServiceProvider::class);
-    }
+class ResponseTest extends TestCase{
 
     /** @test */
-    public function it_returned_ok_response()
+    public function it_returns_response_object()
     {
-        $response = API::ok('this is message', [])->getContent();
-        $expectedResponse = [
-            'MESSAGE' => 'this is message',
-            'STATUS' => 200,
-            "DATA" => []
-        ];
-        $this->assertEquals($expectedResponse, json_decode($response, 1));
-    }
-
-    /** @test */
-    public function it_returned_ok_response_from_helper_function()
-    {
-        $response = api()->ok('this is message', [])->getContent();
-        $expectedResponse = [
-            'MESSAGE' => 'this is message',
-            'STATUS' => 200,
-            "DATA" => []
-        ];
-        $this->assertEquals($expectedResponse, json_decode($response, 1));
-    }
-
-    /** @test */
-    public function it_returned_ok_response_without_require_message_or_data()
-    {
-        $response = api()->ok()->getContent();
-        $expectedResponse = [
-            'MESSAGE' => '',
-            'STATUS' => 200,
-            "DATA" => []
-        ];
-        $this->assertEquals($expectedResponse, json_decode($response, 1));
+        $response = API::response(200, 'New Response', []);
+        $this->assertInstanceOf(JsonResponse::class, $response);
     }
 
     /** @test */
@@ -60,35 +28,45 @@ class ResponseTest extends OrchestraTestCase {
 
         $expectedResponse = [
             'newStatus' => 200,
-            'newMessage' => '',
+            'newMessage' => config('api.messages.200'),
             "newData" => Array()
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
 
     /** @test */
-    public function it_returned_404_response()
+    public function it_returns_string_api_status_code()
     {
-        $response = api()->notFound('No results for your query')->getContent();
-        $expectedResponse = [
-            'MESSAGE' => 'No results for your query',
-            'STATUS' => 404,
-            "DATA" => []
-        ];
-        $this->assertEquals($expectedResponse, json_decode($response, 1));
+        $response = api()->ok()->getContent();
+
+        $this->assertIsString(json_decode($response, 1)['STATUS']);
+
     }
 
     /** @test */
-    public function it_returned_404_response_with_default_config_message()
+    public function user_can_edit_default_stringify_setting()
     {
-        $response = api()->notFound()->getContent();
+        config()->set('api.stringify', false);
+
+        $response = api()->ok()->getContent();
+
+        $this->assertIsInt(json_decode($response, 1)['STATUS']);
+
+    }
+
+    /** @test */
+    public function it_returns_response_from_base_helper_function()
+    {
+        $response = api(403, 'Forbidden response message', [])->getContent();
         $expectedResponse = [
-            'MESSAGE' => config('api.messages.404'),
-            'STATUS' => 404,
-            "DATA" => []
+            'STATUS' => 403,
+            'MESSAGE' => 'Forbidden response message',
+            'DATA' => Array()
         ];
+
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
+
 
     // TODO (3 test): test validation errors, default message validation, serer error response
 }

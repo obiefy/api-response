@@ -28,7 +28,7 @@ class APIResponse
     public function response($status, $message, $data)
     {
         return response()->json([
-            $this->statusLabel => strval($status),
+            $this->statusLabel => config('api.stringify') ? strval($status) : $status,
             $this->messageLabel => $message,
             $this->dataLabel => $data
         ]);
@@ -42,6 +42,9 @@ class APIResponse
      */
     public function ok($message = '', $data = [])
     {
+        if(empty($message)){
+            $message = config('api.messages.200');
+        }
         return $this->response(200, $message, $data);
     }
 
