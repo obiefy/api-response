@@ -14,12 +14,13 @@ class APIServiceProvider extends ServiceProvider {
 
     public function boot()
     {
-        $this->setConfig();
+        $this->publishConfig();
     }
 
-    protected function setConfig()
+    protected function publishConfig()
     {
-        $path =  realpath($raw = __DIR__.'/config/api.php') ?: $raw;
-        $this->mergeConfigFrom($path, 'api');
+        $this->publishes([
+            __DIR__ . '/config/api.php' => config_path('api.php')
+        ], 'api-config');
     }
 }
