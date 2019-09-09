@@ -5,6 +5,8 @@
 Simple Laravel API response wrapper.
 
 ---
+![API response code sample](https://i.ibb.co/0r6wZPt/api-reponse.png)
+---
 
 ## Installation
 1. Install package through composer:
