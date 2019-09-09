@@ -40,7 +40,7 @@ public function index()
 ```
 
 
-## Advance usage
+## Advanced usage
 
 ####  1. General example
 
@@ -97,4 +97,4 @@ I will be happy if I see PR from you.
 
 ## License
 
-The API Response is free package released under the MIT License.
+The API Response is a free package released under the MIT License.
