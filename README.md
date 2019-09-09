@@ -85,7 +85,7 @@ return api()->ok();
 in this case response message will be the default message from config file `config('api.messages.success')` the same thing for `api()->notFound()` and `api()->validation()`.
 
 |method| default status code  | change code |  message  |   
-|--|--| -- | --- | -- |
+|--|--| -- | --- |
 |`ok()`|  200 |`config('api.codes.success)` | `config('api.messages.success)`
 |`notFound()`|  404 |`config('api.codes.notfound)` | `config('api.messages.notfound)`
 |`validation()`|  402 |`config('api.codes.validation)` | `config('api.messages.validation)`
