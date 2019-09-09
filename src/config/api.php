@@ -8,8 +8,14 @@ return [
         'message' => 'MESSAGE',
         'data' => 'DATA',
     ],
+    'codes' => [
+        'success' => 200,
+        'notfound' => 404,
+        'validation' => 402
+    ],
     'messages' => [
-        '200' => 'Process is successfully completed',
-        '404' => 'Sorry no results query for your request.'
+        'success' => 'Process is successfully completed',
+        'notfound' => 'Sorry no results query for your request.',
+        'validation' => 'Validation Failed please check the request attributes and try again.'
     ]
 ];

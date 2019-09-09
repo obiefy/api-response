@@ -43,9 +43,9 @@ class APIResponse
     public function ok($message = '', $data = [])
     {
         if(empty($message)){
-            $message = config('api.messages.200');
+            $message = config('api.messages.success');
         }
-        return $this->response(200, $message, $data);
+        return $this->response(config('api.codes.success'), $message, $data);
     }
 
     /**
@@ -55,9 +55,9 @@ class APIResponse
     public function notFound($message = '')
     {
         if(empty($message)){
-            $message = config('api.messages.404');
+            $message = config('api.messages.notfound');
         }
-        return $this->response(404, $message, []);
+        return $this->response(config('api.codes.notfound'), $message, []);
     }
 
 
@@ -65,9 +65,9 @@ class APIResponse
      * @param $errors
      * @return JsonResponse
      */
-    public function validationFailed($errors)
+    public function validation($errors = [])
     {
-        return $this->response(422, 'Some Fields is required please check the it first', $errors);
+        return $this->response(config('api.codes.validation'), config('api.messages.validation'), $errors);
     }
 
 

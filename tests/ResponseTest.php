@@ -28,7 +28,7 @@ class ResponseTest extends TestCase{
 
         $expectedResponse = [
             'newStatus' => 200,
-            'newMessage' => config('api.messages.200'),
+            'newMessage' => config('api.messages.success'),
             "newData" => Array()
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));

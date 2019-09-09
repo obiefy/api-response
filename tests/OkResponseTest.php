@@ -35,13 +35,20 @@ class OkResponseTest extends TestCase{
     {
         $response = api()->ok()->getContent();
         $expectedResponse = [
-            'MESSAGE' => config('api.messages.200'),
+            'MESSAGE' => config('api.messages.success'),
             'STATUS' => 200,
             "DATA" => []
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
 
-    
+    /** @test */
+    public function user_can_change_default_success_status_code()
+    {
+        config()->set('api.codes.success', 201);
+        $response = api()->ok()->getContent();
+
+        $this->assertEquals(201, json_decode($response, 1)['STATUS']);
+    }
 
 }
