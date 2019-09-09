@@ -15,7 +15,7 @@ if (! function_exists('api')){
         if(func_num_args() === 0) {
             return app('api');
         }
-//        dd(app('api')->response($status, $message, $data));
+
         return app('api')->response($status, $message, $data);
     }
 }

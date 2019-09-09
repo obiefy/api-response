@@ -1,5 +1,6 @@
 # Laravel API Response
 [![Build Status](https://travis-ci.org/obiefy/api-response.svg?branch=master)](https://travis-ci.org/obiefy/api-response)
+ ![Packagist](https://img.shields.io/packagist/l/obiefy/api-response) ![Packagist Version](https://img.shields.io/packagist/v/obiefy/api-response)
 
 Simple and ready to use API response wrapper for Laravel.
 
