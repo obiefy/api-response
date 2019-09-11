@@ -1,19 +1,20 @@
 <?php
+
 namespace Obiefy\Tests;
+
 use Obiefy\API\Facades\API;
 use Obiefy\API\Tests\TestCase;
 
-class OkResponseTest extends TestCase{
-
-
+class OkResponseTest extends TestCase
+{
     /** @test */
     public function it_returns_ok_response()
     {
         $response = API::ok('this is message', [])->getContent();
         $expectedResponse = [
             'MESSAGE' => 'this is message',
-            'STATUS' => 200,
-            "DATA" => []
+            'STATUS'  => 200,
+            'DATA'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -24,8 +25,8 @@ class OkResponseTest extends TestCase{
         $response = api()->ok('this is message', [])->getContent();
         $expectedResponse = [
             'MESSAGE' => 'this is message',
-            'STATUS' => 200,
-            "DATA" => []
+            'STATUS'  => 200,
+            'DATA'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -36,8 +37,8 @@ class OkResponseTest extends TestCase{
         $response = api()->ok()->getContent();
         $expectedResponse = [
             'MESSAGE' => config('api.messages.success'),
-            'STATUS' => 200,
-            "DATA" => []
+            'STATUS'  => 200,
+            'DATA'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -50,5 +51,4 @@ class OkResponseTest extends TestCase{
 
         $this->assertEquals(201, json_decode($response, 1)['STATUS']);
     }
-
 }
