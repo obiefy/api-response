@@ -93,6 +93,7 @@ class APIResponse
         if (empty($message)) {
             $message = config('api.messages.error');
         }
+
         return $this->response(config('api.codes.error'), $message, $data);
     }
 }
