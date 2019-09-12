@@ -63,13 +63,17 @@ class APIResponse
     }
 
     /**
-     * @param $errors
+     * @param string $message
+     * @param array $errors
      *
      * @return JsonResponse
      */
-    public function validation($errors = [])
+    public function validation($message = '', $errors = [])
     {
-        return $this->response(config('api.codes.validation'), config('api.messages.validation'), $errors);
+        if (empty($message)) {
+            $message = config('api.messages.validation');
+        }
+        return $this->response(config('api.codes.validation'), $message, $errors);
     }
 
     /**
