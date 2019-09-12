@@ -93,8 +93,7 @@ in this case response message will be the default message from config file `conf
 |`ok()`|  200 |`config('api.codes.success)` | `config('api.messages.success)`
 |`notFound()`|  404 |`config('api.codes.notfound)` | `config('api.messages.notfound)`
 |`validation()`|  402 |`config('api.codes.validation)` | `config('api.messages.validation)`
-
-
+|`error()`|  402 |`config('api.codes.error)` | `config('api.messages.error)`
 
 ## Contributing
 I will be happy if I see PR from you.
