@@ -64,7 +64,7 @@ class APIResponse
 
     /**
      * @param string $message
-     * @param array $errors
+     * @param array  $errors
      *
      * @return JsonResponse
      */
@@ -73,6 +73,7 @@ class APIResponse
         if (empty($message)) {
             $message = config('api.messages.validation');
         }
+
         return $this->response(config('api.codes.validation'), $message, $errors);
     }
 
