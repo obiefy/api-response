@@ -88,8 +88,12 @@ class APIResponse
         return $this->response(422, $message, $errors);
     }
 
-    public function error($message, $data)
+    public function error($message = '', $data = [])
     {
-        return $this->response(500, $message, $data);
+        if (empty($message)) {
+            $message = config('api.messages.error');
+        }
+
+        return $this->response(config('api.codes.error'), $message, $data);
     }
 }
