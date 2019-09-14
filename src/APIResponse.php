@@ -30,7 +30,7 @@ class APIResponse
             $this->statusLabel  => config('api.stringify') ? strval($status) : $status,
             $this->messageLabel => $message,
             $this->dataLabel    => $data,
-        ]);
+        ], $status);
     }
 
     /**
