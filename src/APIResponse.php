@@ -26,11 +26,13 @@ class APIResponse
      */
     public function response($status, $message, $data)
     {
-        return response()->json([
+        $json = [
             $this->statusLabel  => config('api.stringify') ? strval($status) : $status,
             $this->messageLabel => $message,
             $this->dataLabel    => $data,
-        ], $status);
+        ];
+
+        return (config('api.matchstatus')) ? response()->json($json, $status) : response()->json($json);
     }
 
     /**
