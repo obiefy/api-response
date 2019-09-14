@@ -1,6 +1,7 @@
 <?php
 
-//if (! function_exists('api')){
+if (!function_exists('api')) {
+
     /**
      * Create a new APIResponse instance.
      *
@@ -10,12 +11,12 @@
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    function api($status = 200, $message = '', $data = [])
+    function api($status = 200, $message = '', $data = [], ...$extraData)
     {
         if (func_num_args() === 0) {
             return app('api');
         }
 
-        return app('api')->response($status, $message, $data);
+        return app('api')->response($status, $message, $data, ...$extraData);
     }
-//}
+}

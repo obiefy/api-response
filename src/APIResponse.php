@@ -24,13 +24,19 @@ class APIResponse
      *
      * @return JsonResponse
      */
-    public function response($status, $message, $data)
+    public function response($status, $message, $data, ...$extraData)
     {
         $json = [
             $this->statusLabel  => config('api.stringify') ? strval($status) : $status,
             $this->messageLabel => $message,
             $this->dataLabel    => $data,
         ];
+
+        if ($extraData) {
+            foreach ($extraData as $extra) {
+                $json = array_merge($json, $extra);
+            }
+        }
 
         return (config('api.matchstatus')) ? response()->json($json, $status) : response()->json($json);
     }
