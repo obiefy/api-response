@@ -10,7 +10,6 @@ Simple Laravel API response wrapper.
 ![API response code sample](https://i.ibb.co/0r6wZPt/api-reponse.png)
 ---
 
-#
 ## Installation
 1. Install the package through composer:
 
@@ -30,7 +29,6 @@ Simple Laravel API response wrapper.
 
 Note: You could also include "`use Obiefy\API\Facades\API;`" at the top of the class, but we recommend not to.
 
-#
 ## Basic usage
 There are to ways of utilizing the package: using the `facade`, or using the `helper` function.
 On either way you will get the same result, it is totally up to you.
@@ -60,7 +58,6 @@ public function index()
 }
 ```
 
-#
 ## Advanced usage
 The `response()` method accepts three mandatory parameters:
  - `int $status`
@@ -142,7 +139,6 @@ This is the result:
 }
 ```
 
-#
 ## Helper functions
 The package ships with a group of functions that will help you to speed up your development process. For example, you could call directly `api()->ok()` if the response was successful, instead of building the response.
 
@@ -196,7 +192,6 @@ return api()->validation('These fields are required.', ['name', 'lastName']);
 #### `function error()`
 The `error()` function can be used when an internal server error occurs throwing a 500 status code by default. It accepts two mandatory parameters: a message and an array of errors, and as many extra parameters you need (we recommend a key value array format). If the message is empty, then the default message will be used instead.
 
-#
 ## Configuration
 If you need to customize the default messages or the json response labels, you can do it directly on the `api.php` configuration file.
 
@@ -207,11 +202,8 @@ If you need to customize the default messages or the json response labels, you c
 |`validation()`|  402 |`config('api.codes.validation)` | `config('api.messages.validation)`
 |`error()`|  500 |`config('api.codes.error)` | `config('api.messages.error)`
 
-#
 ## Contributing
 We will be happy if we see PR from you.
 
-#
 ## License
-
 The API Response is a free package released under the MIT License.
