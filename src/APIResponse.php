@@ -47,13 +47,13 @@ class APIResponse
      *
      * @return JsonResponse
      */
-    public function ok($message = '', $data = [])
+    public function ok($message = '', $data = [], ...$extraData)
     {
         if (empty($message)) {
             $message = config('api.messages.success');
         }
 
-        return $this->response(config('api.codes.success'), $message, $data);
+        return $this->response(config('api.codes.success'), $message, $data, ...$extraData);
     }
 
     /**
@@ -76,13 +76,13 @@ class APIResponse
      *
      * @return JsonResponse
      */
-    public function validation($message = '', $errors = [])
+    public function validation($message = '', $errors = [], ...$extraData)
     {
         if (empty($message)) {
             $message = config('api.messages.validation');
         }
 
-        return $this->response(config('api.codes.validation'), $message, $errors);
+        return $this->response(config('api.codes.validation'), $message, $errors, ...$extraData);
     }
 
     /**
@@ -91,17 +91,17 @@ class APIResponse
      *
      * @return JsonResponse
      */
-    public function validationFailedWithMessage($message, $errors)
+    public function validationFailedWithMessage($message, $errors, ...$extraData)
     {
-        return $this->response(422, $message, $errors);
+        return $this->response(422, $message, $errors, ...$extraData);
     }
 
-    public function error($message = '', $data = [])
+    public function error($message = '', $data = [], ...$extraData)
     {
         if (empty($message)) {
             $message = config('api.messages.error');
         }
 
-        return $this->response(config('api.codes.error'), $message, $data);
+        return $this->response(config('api.codes.error'), $message, $data, ...$extraData);
     }
 }
