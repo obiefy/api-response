@@ -3,9 +3,11 @@
 namespace Obiefy\API;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Traits\Macroable;
 
 class APIResponse
 {
+    use Macroable;
     protected $statusLabel;
     protected $messageLabel;
     protected $dataLabel;
@@ -21,6 +23,7 @@ class APIResponse
      * @param $status
      * @param $message
      * @param $data
+     * @param array $extraData
      *
      * @return JsonResponse
      */
@@ -42,13 +45,15 @@ class APIResponse
     }
 
     /**
-     * @param $message
-     * @param $data
+     * @param string $message
+     * @param array $data
      *
+     * @param array $extraData
      * @return JsonResponse
      */
     public function ok($message = '', $data = [], ...$extraData)
     {
+
         if (empty($message)) {
             $message = config('api.messages.success');
         }
@@ -72,8 +77,9 @@ class APIResponse
 
     /**
      * @param string $message
-     * @param array  $errors
+     * @param array $errors
      *
+     * @param array $extraData
      * @return JsonResponse
      */
     public function validation($message = '', $errors = [], ...$extraData)
@@ -86,9 +92,10 @@ class APIResponse
     }
 
     /**
-     * @param $errors
      * @param $message
      *
+     * @param $errors
+     * @param array $extraData
      * @return JsonResponse
      */
     public function validationFailedWithMessage($message, $errors, ...$extraData)

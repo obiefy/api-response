@@ -3,12 +3,14 @@
 namespace Obiefy\API;
 
 use Illuminate\Support\ServiceProvider;
+use Obiefy\API\Facades\API;
+use function PHPUnit\Framework\StaticAnalysis\HappyPath\AssertIsArray\consume;
 
 class APIServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton('api', function () {
+        $this->app->bind('api', function () {
             return new APIResponse();
         });
     }
@@ -18,6 +20,8 @@ class APIServiceProvider extends ServiceProvider
         $this->setupConfig();
 
         $this->registerHelpers();
+
+        $this->registerMacros();
 
         $this->publishes([
             __DIR__.'/config/api.php' => config_path('api.php'),
@@ -34,6 +38,28 @@ class APIServiceProvider extends ServiceProvider
     {
         if (file_exists($helperFile = __DIR__.'/helpers.php')) {
             require_once $helperFile;
+        }
+    }
+
+    protected function registerMacros()
+    {
+        // check if config file contains extra methods
+        if(config()->has('api.methods')){
+
+            // looping inside all methods
+            foreach (config('api.methods') as $method){
+
+                // start adding macros
+                API::macro($method['method'], function ($message = '', $data = []) use ($method) {
+
+                    // get default message if message not exist
+                    if (empty($message)) {
+                        $message = $method['message'];
+                    }
+
+                    return API::response($method['code'], $message, $data);
+                });
+            }
         }
     }
 }

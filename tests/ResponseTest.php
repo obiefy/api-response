@@ -3,6 +3,8 @@
 namespace Obiefy\Tests;
 
 use Illuminate\Http\JsonResponse;
+use Obiefy\API\APIResponse;
+use Obiefy\API\APIServiceProvider;
 use Obiefy\API\Facades\API;
 use Obiefy\API\Tests\TestCase;
 
@@ -25,7 +27,6 @@ class ResponseTest extends TestCase
         ]);
 
         $response = api()->ok()->getContent();
-
         $expectedResponse = [
             'newStatus'  => 200,
             'newMessage' => config('api.messages.success'),

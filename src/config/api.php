@@ -41,4 +41,15 @@ return [
         'validation' => 'Validation Failed please check the request attributes and try again.',
         'error'      => 'Server error, please try again later',
     ],
+
+    /**
+     * Extra methods
+     */
+    'methods' => [
+        [
+            'code'    => 403,
+            'method'  => 'forbidden',
+            'message' => 'default message'
+        ]
+    ]
 ];
