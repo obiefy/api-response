@@ -46,14 +46,13 @@ class APIResponse
 
     /**
      * @param string $message
-     * @param array $data
+     * @param array  $data
+     * @param array  $extraData
      *
-     * @param array $extraData
      * @return JsonResponse
      */
     public function ok($message = '', $data = [], ...$extraData)
     {
-
         if (empty($message)) {
             $message = config('api.messages.success');
         }
@@ -77,9 +76,9 @@ class APIResponse
 
     /**
      * @param string $message
-     * @param array $errors
+     * @param array  $errors
+     * @param array  $extraData
      *
-     * @param array $extraData
      * @return JsonResponse
      */
     public function validation($message = '', $errors = [], ...$extraData)
@@ -93,9 +92,9 @@ class APIResponse
 
     /**
      * @param $message
-     *
      * @param $errors
      * @param array $extraData
+     *
      * @return JsonResponse
      */
     public function validationFailedWithMessage($message, $errors, ...$extraData)

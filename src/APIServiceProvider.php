@@ -4,7 +4,6 @@ namespace Obiefy\API;
 
 use Illuminate\Support\ServiceProvider;
 use Obiefy\API\Facades\API;
-use function PHPUnit\Framework\StaticAnalysis\HappyPath\AssertIsArray\consume;
 
 class APIServiceProvider extends ServiceProvider
 {
@@ -44,10 +43,10 @@ class APIServiceProvider extends ServiceProvider
     protected function registerMacros()
     {
         // check if config file contains extra methods
-        if(config()->has('api.methods')){
+        if (config()->has('api.methods')) {
 
             // looping inside all methods
-            foreach (config('api.methods') as $method){
+            foreach (config('api.methods') as $method) {
 
                 // start adding macros
                 API::macro($method['method'], function ($message = '', $data = []) use ($method) {
