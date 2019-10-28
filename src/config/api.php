@@ -42,14 +42,14 @@ return [
         'error'      => 'Server error, please try again later',
     ],
 
-    /**
+    /*
      * Extra methods
      */
     'methods' => [
         [
             'code'    => 403,
             'method'  => 'forbidden',
-            'message' => 'default message'
-        ]
-    ]
+            'message' => 'default message',
+        ],
+    ],
 ];

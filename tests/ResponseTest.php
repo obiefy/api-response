@@ -3,8 +3,6 @@
 namespace Obiefy\Tests;
 
 use Illuminate\Http\JsonResponse;
-use Obiefy\API\APIResponse;
-use Obiefy\API\APIServiceProvider;
 use Obiefy\API\Facades\API;
 use Obiefy\API\Tests\TestCase;
 
