@@ -28,7 +28,7 @@ return [
     'codes' => [
         'success'    => 200,
         'notfound'   => 404,
-        'validation' => 402,
+        'validation' => 422,
         'error'      => 500,
     ],
 
