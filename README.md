@@ -43,7 +43,7 @@ public function index()
 {
     $users = User::all();
 
-    return API::response(200,'users list', $users);
+    return API::response(200, 'users list', $users);
 }
 ```
 Note: If you decide not to register the service provider and the facade, alias then you need to include `use Obiefy\API\Facades\API;` at the top of the class, but we recommend not to.
