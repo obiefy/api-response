@@ -183,7 +183,7 @@ return api()->notFound();
 ```
 
 #### `function validation()`
-The `validation()` function can be used on the case of a validation error exist, throwing a 402 status code by default. It accepts two mandatory parameters: a message and an array of errors, and as many extra parameters you need (we recommend a key value array format). If the message is empty, then the default message will be used instead.
+The `validation()` function can be used on the case of a validation error exist, throwing a 422 status code by default. It accepts two mandatory parameters: a message and an array of errors, and as many extra parameters you need (we recommend a key value array format). If the message is empty, then the default message will be used instead.
 
 ```php
 return api()->validation('These fields are required.', ['name', 'lastName']);
@@ -193,14 +193,33 @@ return api()->validation('These fields are required.', ['name', 'lastName']);
 The `error()` function can be used when an internal server error occurs throwing a 500 status code by default. It accepts two mandatory parameters: a message and an array of errors, and as many extra parameters you need (we recommend a key value array format). If the message is empty, then the default message will be used instead.
 
 ## Configuration
+
+### JSON Response Labels
 If you need to customize the default messages or the json response labels, you can do it directly on the `api.php` configuration file.
 
 |method| default status code  | change code |  message  |
 |--|--| -- | --- |
 |`ok()`|  200 |`config('api.codes.success)` | `config('api.messages.success)`
 |`notFound()`|  404 |`config('api.codes.notfound)` | `config('api.messages.notfound)`
-|`validation()`|  402 |`config('api.codes.validation)` | `config('api.messages.validation)`
+|`validation()`|  422 |`config('api.codes.validation)` | `config('api.messages.validation)`
 |`error()`|  500 |`config('api.codes.error)` | `config('api.messages.error)`
+
+### Matching Status Codes
+By default, all API responses return a 200 OK HTTP status header. If you'd like the status header to match the Response's status, set the `matchstatus` configuration to `true`
+
+### Include The Count Of Data 
+You can optionally include the count of the `DATA` portion of the response, by setting `includeDataCount` to `true` in the `api.php` configuration file. You can also override the label, if desired, by updating the label in the`keys` array of the configuration file.
+
+```json
+{
+    "STATUS": "200",
+    "MESSAGE": "User Profile data",
+    "DATA": [
+        ...
+    ],
+    "DATACOUNT": 6
+}
+```
 
 ## Contributing
 We will be happy if we see PR from you.
