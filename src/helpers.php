@@ -14,9 +14,9 @@ if (!function_exists('api')) {
     function api($status = 200, $message = '', $data = [], ...$extraData)
     {
         if (func_num_args() === 0) {
-            return app('api');
+            return app('api.response');
         }
 
-        return app('api')->response($status, $message, $data, ...$extraData);
+        return app('api.response')->response($status, $message, $data, ...$extraData);
     }
 }
