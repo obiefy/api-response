@@ -53,9 +53,9 @@ return [
      */
     'methods' => [
         [
-        	'code'    => 403,
-        	'method'  => 'forbidden',
-        	'message' => 'default message',
+            'code'    => 403,
+            'method'  => 'forbidden',
+            'message' => 'default message',
         ],
-  ],
+    ],
 ];
