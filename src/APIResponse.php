@@ -36,7 +36,7 @@ class APIResponse
             $this->dataLabel    => $data,
         ];
 
-        is_countable($data) &&  config('api.includeDataCount', false) && !empty($data) ? 
+        is_countable($data) && config('api.includeDataCount', false) && !empty($data) ? 
             $json = array_merge($json, [$this->dataCountLabel => count($data)]) :
             '';
 
