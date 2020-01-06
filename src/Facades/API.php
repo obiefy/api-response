@@ -8,6 +8,6 @@ class API extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'api';
+        return 'api.response';
     }
 }
