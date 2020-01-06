@@ -36,5 +36,4 @@ class APIServiceProvider extends ServiceProvider
             require_once $helperFile;
         }
     }
-
 }
