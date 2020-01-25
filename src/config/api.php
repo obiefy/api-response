@@ -14,12 +14,18 @@ return [
     'matchstatus' => false,
 
     /*
+     * Include the count of the "data" in the JSON response
+     */
+    'includeDataCount' => false,
+
+    /*
      * Json response's body labels.
      */
     'keys'      => [
-        'status'  => 'STATUS',
-        'message' => 'MESSAGE',
-        'data'    => 'DATA',
+        'status'    => 'STATUS',
+        'message'   => 'MESSAGE',
+        'data'      => 'DATA',
+        'dataCount' => 'DATACOUNT',
     ],
 
     /*
@@ -42,4 +48,14 @@ return [
         'error'      => 'Server error, please try again later',
     ],
 
+    /*
+     * Extra methods
+     */
+    'methods' => [
+        [
+            'code'    => 403,
+            'method'  => 'forbidden',
+            'message' => 'default message',
+        ],
+    ],
 ];
