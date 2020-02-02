@@ -7,7 +7,7 @@
 Simple Laravel API response wrapper.
 
 ---
-![API response code sample](https://i.ibb.co/0r6wZPt/api-reponse.png)
+![API response code sample](https://i.ibb.co/S5bLwKc/carbon.png)
 ---
 
 ## Installation
