@@ -7,7 +7,6 @@ use Obiefy\API\Contracts\APIResponseContract;
 
 class APIServiceProvider extends ServiceProvider
 {
-
     /**
      * Register API class.
      *
@@ -37,7 +36,7 @@ class APIServiceProvider extends ServiceProvider
     }
 
     /**
-     * Set Config files
+     * Set Config files.
      */
     protected function setupConfig()
     {
@@ -46,7 +45,7 @@ class APIServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register helpers
+     * Register helpers.
      */
     protected function registerHelpers()
     {

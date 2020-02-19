@@ -11,29 +11,32 @@ class APIResponse implements APIResponseContract
     use Macroable;
 
     /**
-     * Status Label
+     * Status Label.
+     *
      * @var string
      */
     protected $statusLabel;
 
     /**
-     * Message Label
+     * Message Label.
+     *
      * @var string
      */
     protected $messageLabel;
 
     /**
-     * Data Label
+     * Data Label.
+     *
      * @var string
      */
     protected $dataLabel;
 
     /**
-     * Data count Label
+     * Data count Label.
+     *
      * @var string
      */
     public $dataCountLabel;
-
 
     public function __construct()
     {
@@ -41,7 +44,7 @@ class APIResponse implements APIResponseContract
     }
 
     /**
-     * Register response labels
+     * Register response labels.
      */
     public function setLabels()
     {
@@ -52,12 +55,12 @@ class APIResponse implements APIResponseContract
     }
 
     /**
-     * Create API response
+     * Create API response.
      *
-     * @param int $status
+     * @param int    $status
      * @param string $message
-     * @param array $data
-     * @param array $extraData
+     * @param array  $data
+     * @param array  $extraData
      *
      * @return JsonResponse
      */
@@ -83,11 +86,11 @@ class APIResponse implements APIResponseContract
     }
 
     /**
-     * Create successful (200) API response
+     * Create successful (200) API response.
      *
      * @param string $message
-     * @param array $data
-     * @param array $extraData
+     * @param array  $data
+     * @param array  $extraData
      *
      * @return JsonResponse
      */
@@ -101,7 +104,7 @@ class APIResponse implements APIResponseContract
     }
 
     /**
-     * Create Not found (404) API response
+     * Create Not found (404) API response.
      *
      * @param string $message
      *
@@ -117,11 +120,11 @@ class APIResponse implements APIResponseContract
     }
 
     /**
-     * Create Validation (422) API response
+     * Create Validation (422) API response.
      *
      * @param string $message
-     * @param array $errors
-     * @param array $extraData
+     * @param array  $errors
+     * @param array  $extraData
      *
      * @return JsonResponse
      */
@@ -135,15 +138,16 @@ class APIResponse implements APIResponseContract
     }
 
     /**
-     * Create Validation (422) API response
+     * Create Validation (422) API response.
      *
      * @param string $message
-     * @param array $data
-     * @param array $extraData
+     * @param array  $data
+     * @param array  $extraData
      *
      * @return JsonResponse
      */
-    public function forbidden($message = null, $data = [], ...$extraData){
+    public function forbidden($message = null, $data = [], ...$extraData)
+    {
         if (is_null($message)) {
             $message = config('api.messages.forbidden');
         }
@@ -164,11 +168,11 @@ class APIResponse implements APIResponseContract
     }
 
     /**
-     * Create Server error (500) API response
+     * Create Server error (500) API response.
      *
      * @param string $message
-     * @param array $data
-     * @param array $extraData
+     * @param array  $data
+     * @param array  $extraData
      *
      * @return JsonResponse
      */
