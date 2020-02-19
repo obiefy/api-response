@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\JsonResponse;
+use Obiefy\API\Contracts\APIResponseContract;
 
 if (!function_exists('api')) {
 
@@ -17,9 +18,9 @@ if (!function_exists('api')) {
     function api($status = 200, $message = '', $data = [], ...$extraData)
     {
         if (func_num_args() === 0) {
-            return app('api.response');
+            return app(APIResponseContract::class);
         }
 
-        return app('api.response')->response($status, $message, $data, ...$extraData);
+        return app(APIResponseContract::class)->response($status, $message, $data, ...$extraData);
     }
 }

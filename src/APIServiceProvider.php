@@ -3,6 +3,7 @@
 namespace Obiefy\API;
 
 use Illuminate\Support\ServiceProvider;
+use Obiefy\API\Contracts\APIResponseContract;
 
 class APIServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,7 @@ class APIServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('api.response', function () {
+        $this->app->bind(APIResponseContract::class, function () {
             return new APIResponse();
         });
     }
