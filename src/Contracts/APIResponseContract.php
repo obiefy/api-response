@@ -8,7 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 interface APIResponseContract {
 
-
     /**
      * Register response labels
      */
@@ -35,7 +34,7 @@ interface APIResponseContract {
      *
      * @return JsonResponse
      */
-    public function ok($message = '', $data = [], ...$extraData);
+    public function ok($message = null, $data = [], ...$extraData);
 
     /**
      * Create Not found (404) API response
@@ -44,7 +43,7 @@ interface APIResponseContract {
      *
      * @return JsonResponse
      */
-    public function notFound($message = '');
+    public function notFound($message = null);
 
     /**
      * Create Validation (422) API response
@@ -55,7 +54,7 @@ interface APIResponseContract {
      *
      * @return JsonResponse
      */
-    public function validation($message = '', $errors = [], ...$extraData);
+    public function validation($message = null, $errors = [], ...$extraData);
 
     /**
      * Create Server error (500) API response
@@ -66,6 +65,6 @@ interface APIResponseContract {
      *
      * @return JsonResponse
      */
-    public function error($message = '', $data = [], ...$extraData);
+    public function error($message = null, $data = [], ...$extraData);
 
 }

@@ -91,9 +91,9 @@ class APIResponse implements APIResponseContract
      *
      * @return JsonResponse
      */
-    public function ok($message = '', $data = [], ...$extraData)
+    public function ok($message = null, $data = [], ...$extraData)
     {
-        if (empty($message)) {
+        if (is_null($message)) {
             $message = config('api.messages.success');
         }
 
@@ -107,9 +107,9 @@ class APIResponse implements APIResponseContract
      *
      * @return JsonResponse
      */
-    public function notFound($message = '')
+    public function notFound($message = null)
     {
-        if (empty($message)) {
+        if (is_null($message)) {
             $message = config('api.messages.notfound');
         }
 
@@ -125,9 +125,9 @@ class APIResponse implements APIResponseContract
      *
      * @return JsonResponse
      */
-    public function validation($message = '', $errors = [], ...$extraData)
+    public function validation($message = null, $errors = [], ...$extraData)
     {
-        if (empty($message)) {
+        if (is_null($message)) {
             $message = config('api.messages.validation');
         }
 
@@ -155,9 +155,9 @@ class APIResponse implements APIResponseContract
      *
      * @return JsonResponse
      */
-    public function error($message = '', $data = [], ...$extraData)
+    public function error($message = null, $data = [], ...$extraData)
     {
-        if (empty($message)) {
+        if (is_null($message)) {
             $message = config('api.messages.error');
         }
 

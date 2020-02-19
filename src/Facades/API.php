@@ -7,9 +7,9 @@ use Obiefy\API\APIResponse;
 
 /**
  * @method static APIResponse response($status, $message, $data, ...$extraData)
- * @method static APIResponse ok($message = '', $data = [], ...$extraData)
- * @method static APIResponse notFound($message = '')
- * @method static APIResponse validation($message = '', $errors = [], ...$extraData)
+ * @method static APIResponse ok($message = null, $data = [], ...$extraData)
+ * @method static APIResponse notFound($message = null)
+ * @method static APIResponse validation($message = null, $errors = [], ...$extraData)
  *
  * @see APIResponse
  */
