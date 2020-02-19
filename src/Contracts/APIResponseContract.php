@@ -57,6 +57,17 @@ interface APIResponseContract {
     public function validation($message = null, $errors = [], ...$extraData);
 
     /**
+     * Create Validation (422) API response
+     *
+     * @param string $message
+     * @param array $data
+     * @param array $extraData
+     *
+     * @return JsonResponse
+     */
+    public function forbidden($message = null, $data = [], ...$extraData);
+
+    /**
      * Create Server error (500) API response
      *
      * @param string $message

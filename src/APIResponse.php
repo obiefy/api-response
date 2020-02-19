@@ -135,6 +135,23 @@ class APIResponse implements APIResponseContract
     }
 
     /**
+     * Create Validation (422) API response
+     *
+     * @param string $message
+     * @param array $data
+     * @param array $extraData
+     *
+     * @return JsonResponse
+     */
+    public function forbidden($message = null, $data = [], ...$extraData){
+        if (is_null($message)) {
+            $message = config('api.messages.forbidden');
+        }
+
+        return $this->response(config('api.codes.forbidden'), $message, $data, ...$extraData);
+    }
+
+    /**
      * @param $message
      * @param $errors
      * @param array $extraData
