@@ -16,7 +16,6 @@ use Obiefy\API\Contracts\APIResponseContract;
  */
 class API extends Facade
 {
-
     /**
      * @return string
      */
