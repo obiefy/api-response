@@ -31,7 +31,7 @@ class APIServiceProvider extends ServiceProvider
         $this->registerHelpers();
 
         $this->publishes([
-            __DIR__.'/config/api.php' => config_path('api.php'),
+            __DIR__.'/../config/api.php' => config_path('api.php'),
         ], 'api-response');
     }
 
@@ -40,7 +40,7 @@ class APIServiceProvider extends ServiceProvider
      */
     protected function setupConfig()
     {
-        $path = realpath($raw = __DIR__.'/config/api.php') ?: $raw;
+        $path = realpath($raw = __DIR__.'/../config/api.php') ?: $raw;
         $this->mergeConfigFrom($path, 'api');
     }
 
