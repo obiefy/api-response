@@ -4,25 +4,36 @@ namespace Obiefy\API;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Traits\Macroable;
+use Obiefy\API\Contracts\APIResponseContract;
 
-class APIResponse
+class APIResponse implements APIResponseContract
 {
     use Macroable;
 
-    /** Status Label
+    /**
+     * Status Label
      * @var string
      */
     protected $statusLabel;
 
-    /** Message Label
+    /**
+     * Message Label
      * @var string
      */
     protected $messageLabel;
 
-    /** Data Label
+    /**
+     * Data Label
      * @var string
      */
     protected $dataLabel;
+
+    /**
+     * Data count Label
+     * @var string
+     */
+    public $dataCountLabel;
+
 
     public function __construct()
     {
@@ -32,7 +43,7 @@ class APIResponse
     /**
      * Register response labels
      */
-    protected function setLabels()
+    public function setLabels()
     {
         $this->statusLabel = config('api.keys.status');
         $this->messageLabel = config('api.keys.message');
@@ -41,9 +52,11 @@ class APIResponse
     }
 
     /**
-     * @param $status
-     * @param $message
-     * @param $data
+     * Create API response
+     *
+     * @param int $status
+     * @param string $message
+     * @param array $data
      * @param array $extraData
      *
      * @return JsonResponse
@@ -70,9 +83,11 @@ class APIResponse
     }
 
     /**
+     * Create successful (200) API response
+     *
      * @param string $message
-     * @param array  $data
-     * @param array  $extraData
+     * @param array $data
+     * @param array $extraData
      *
      * @return JsonResponse
      */
@@ -86,6 +101,8 @@ class APIResponse
     }
 
     /**
+     * Create Not found (404) API response
+     *
      * @param string $message
      *
      * @return JsonResponse
@@ -100,9 +117,11 @@ class APIResponse
     }
 
     /**
+     * Create Validation (422) API response
+     *
      * @param string $message
-     * @param array  $errors
-     * @param array  $extraData
+     * @param array $errors
+     * @param array $extraData
      *
      * @return JsonResponse
      */
@@ -127,6 +146,15 @@ class APIResponse
         return $this->response(422, $message, $errors, ...$extraData);
     }
 
+    /**
+     * Create Server error (500) API response
+     *
+     * @param string $message
+     * @param array $data
+     * @param array $extraData
+     *
+     * @return JsonResponse
+     */
     public function error($message = '', $data = [], ...$extraData)
     {
         if (empty($message)) {
