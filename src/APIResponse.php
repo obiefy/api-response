@@ -8,11 +8,31 @@ use Illuminate\Support\Traits\Macroable;
 class APIResponse
 {
     use Macroable;
+
+    /** Status Label
+     * @var string
+     */
     protected $statusLabel;
+
+    /** Message Label
+     * @var string
+     */
     protected $messageLabel;
+
+    /** Data Label
+     * @var string
+     */
     protected $dataLabel;
 
     public function __construct()
+    {
+        $this->setLabels();
+    }
+
+    /**
+     * Register response labels
+     */
+    protected function setLabels()
     {
         $this->statusLabel = config('api.keys.status');
         $this->messageLabel = config('api.keys.message');

@@ -1,15 +1,18 @@
 <?php
 
+use Illuminate\Http\JsonResponse;
+
 if (!function_exists('api')) {
 
     /**
      * Create a new APIResponse instance.
      *
-     * @param int    $status
+     * @param int $status
      * @param string $message
-     * @param array  $data
+     * @param array $data
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @param array $extraData
+     * @return JsonResponse
      */
     function api($status = 200, $message = '', $data = [], ...$extraData)
     {
