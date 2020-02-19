@@ -61,7 +61,7 @@ class APIResponse implements APIResponseContract
      *
      * @return JsonResponse
      */
-    public function response($status = 200, $message = null, array $data = [], ...$extraData)
+    public function response($status = 200, $message = null, $data = [], ...$extraData)
     {
         $json = [
             $this->statusLabel  => config('api.stringify') ? strval($status) : $status,

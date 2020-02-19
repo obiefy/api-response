@@ -23,7 +23,7 @@ interface APIResponseContract {
      *
      * @return JsonResponse
      */
-    public function response($status = 200, $message = null, array $data = [], ...$extraData);
+    public function response($status = 200, $message = null, $data = [], ...$extraData);
 
     /**
      * Create successful (200) API response
