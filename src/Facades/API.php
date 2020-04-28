@@ -4,7 +4,7 @@ namespace Obiefy\API\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Obiefy\API\APIResponse;
-use Obiefy\API\Contracts\APIResponseContract;
+use Obiefy\API\Contracts\APIResponseInterface;
 
 /**
  * @method static APIResponse response($status, $message, $data, ...$extraData)
@@ -21,6 +21,6 @@ class API extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return APIResponseContract::class;
+        return APIResponseInterface::class;
     }
 }

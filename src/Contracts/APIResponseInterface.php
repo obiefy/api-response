@@ -4,7 +4,7 @@ namespace Obiefy\API\Contracts;
 
 use Illuminate\Http\JsonResponse;
 
-interface APIResponseContract
+interface APIResponseInterface
 {
     /**
      * Register response labels.

@@ -4,9 +4,9 @@ namespace Obiefy\API;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Traits\Macroable;
-use Obiefy\API\Contracts\APIResponseContract;
+use Obiefy\API\Contracts\APIResponseInterface;
 
-class APIResponse implements APIResponseContract
+class APIResponse implements APIResponseInterface
 {
     use Macroable;
 
