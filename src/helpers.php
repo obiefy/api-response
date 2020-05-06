@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\JsonResponse;
+use Obiefy\API\APIResponse;
 use Obiefy\API\Contracts\APIResponseInterface;
 
 if (!function_exists('api')) {
@@ -13,7 +14,7 @@ if (!function_exists('api')) {
      * @param array  $data
      * @param array  $extraData
      *
-     * @return JsonResponse
+     * @return APIResponse|JsonResponse
      */
     function api($status = 200, $message = '', $data = [], ...$extraData)
     {
