@@ -2,7 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Obiefy\API\APIResponse;
-use Obiefy\API\Contracts\APIResponseInterface;
+use Obiefy\Api\Contracts\ApiInterface;
 
 if (!function_exists('api')) {
 
@@ -19,9 +19,9 @@ if (!function_exists('api')) {
     function api($status = 200, $message = '', $data = [], ...$extraData)
     {
         if (func_num_args() === 0) {
-            return app(APIResponseInterface::class);
+            return app(ApiInterface::class);
         }
 
-        return app(APIResponseInterface::class)->response($status, $message, $data, ...$extraData);
+        return app(ApiInterface::class)->response($status, $message, $data, ...$extraData);
     }
 }

@@ -3,9 +3,9 @@
 namespace Obiefy\API;
 
 use Illuminate\Support\ServiceProvider;
-use Obiefy\API\Contracts\APIResponseInterface;
+use Obiefy\Api\Contracts\ApiInterface;
 
-class APIServiceProvider extends ServiceProvider
+class ApiResponseServiceProvider extends ServiceProvider
 {
     /**
      * Register API class.
@@ -14,8 +14,8 @@ class APIServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(APIResponseInterface::class, function () {
-            return new APIResponse();
+        $this->app->bind(ApiInterface::class, function () {
+            return new ApiResponse();
         });
     }
 

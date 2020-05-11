@@ -4,55 +4,11 @@ namespace Obiefy\API;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Traits\Macroable;
-use Obiefy\API\Contracts\APIResponseInterface;
+use Obiefy\API\Contracts\ApiInterface;
 
-class APIResponse implements APIResponseInterface
+class ApiResponse implements ApiInterface
 {
     use Macroable;
-
-    /**
-     * Status Label.
-     *
-     * @var string
-     */
-    protected $statusLabel;
-
-    /**
-     * Message Label.
-     *
-     * @var string
-     */
-    protected $messageLabel;
-
-    /**
-     * Data Label.
-     *
-     * @var string
-     */
-    protected $dataLabel;
-
-    /**
-     * Data count Label.
-     *
-     * @var string
-     */
-    public $dataCountLabel;
-
-    public function __construct()
-    {
-        $this->setLabels();
-    }
-
-    /**
-     * Register response labels.
-     */
-    public function setLabels()
-    {
-        $this->statusLabel = config('api.keys.status');
-        $this->messageLabel = config('api.keys.message');
-        $this->dataLabel = config('api.keys.data');
-        $this->dataCountLabel = config('api.keys.data_count', 'DATA_COUNT');
-    }
 
     /**
      * Create API response.
@@ -67,14 +23,14 @@ class APIResponse implements APIResponseInterface
     public function response($status = 200, $message = null, $data = [], ...$extraData)
     {
         $json = [
-            $this->statusLabel  => config('api.stringify') ? strval($status) : $status,
-            $this->messageLabel => $message,
-            $this->dataLabel    => $data,
+            config('api.keys.status')  => config('api.stringify') ? strval($status) : $status,
+            config('api.keys.message') => $message,
+            config('api.keys.data')    => $data,
         ];
 
-        is_countable($data) && config('api.include_data_count', false) && !empty($data) ?
-            $json = array_merge($json, [$this->dataCountLabel => count($data)]) :
-            '';
+        if (is_countable($data) && config('api.include_data_count', false) && !empty($data)) {
+            $json = array_merge($json, [config('api.keys.data_count') => config('api.stringify') ? strval(count($data)) : count($data)]);
+        }
 
         if ($extraData) {
             foreach ($extraData as $extra) {
