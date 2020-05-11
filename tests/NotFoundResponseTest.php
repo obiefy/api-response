@@ -30,13 +30,5 @@ class NotFoundResponseTest extends TestCase
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
-
-    /** @test */
-    public function user_can_change_default_notfound_status_code()
-    {
-        config()->set('api.codes.notfound', 406);
-        $response = api()->notFound()->getContent();
-
-        $this->assertEquals(406, json_decode($response, 1)['STATUS']);
-    }
+    
 }

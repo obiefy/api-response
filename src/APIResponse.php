@@ -51,7 +51,7 @@ class APIResponse implements APIResponseInterface
         $this->statusLabel = config('api.keys.status');
         $this->messageLabel = config('api.keys.message');
         $this->dataLabel = config('api.keys.data');
-        $this->dataCountLabel = config('api.keys.dataCount', 'DATACOUNT');
+        $this->dataCountLabel = config('api.keys.data_count', 'DATA_COUNT');
     }
 
     /**
@@ -72,7 +72,7 @@ class APIResponse implements APIResponseInterface
             $this->dataLabel    => $data,
         ];
 
-        is_countable($data) && config('api.includeDataCount', false) && !empty($data) ?
+        is_countable($data) && config('api.include_data_count', false) && !empty($data) ?
             $json = array_merge($json, [$this->dataCountLabel => count($data)]) :
             '';
 
@@ -82,7 +82,7 @@ class APIResponse implements APIResponseInterface
             }
         }
 
-        return (config('api.matchstatus')) ? response()->json($json, $status) : response()->json($json);
+        return (config('api.match_status')) ? response()->json($json, $status) : response()->json($json);
     }
 
     /**
@@ -100,7 +100,7 @@ class APIResponse implements APIResponseInterface
             $message = config('api.messages.success');
         }
 
-        return $this->response(config('api.codes.success'), $message, $data, ...$extraData);
+        return $this->response(200, $message, $data, ...$extraData);
     }
 
     /**
@@ -116,7 +116,7 @@ class APIResponse implements APIResponseInterface
             $message = config('api.messages.notfound');
         }
 
-        return $this->response(config('api.codes.notfound'), $message, []);
+        return $this->response(404, $message, []);
     }
 
     /**
@@ -134,7 +134,7 @@ class APIResponse implements APIResponseInterface
             $message = config('api.messages.validation');
         }
 
-        return $this->response(config('api.codes.validation'), $message, $errors, ...$extraData);
+        return $this->response(422, $message, $errors, ...$extraData);
     }
 
     /**
@@ -152,20 +152,9 @@ class APIResponse implements APIResponseInterface
             $message = config('api.messages.forbidden');
         }
 
-        return $this->response(config('api.codes.forbidden'), $message, $data, ...$extraData);
+        return $this->response(403, $message, $data, ...$extraData);
     }
 
-    /**
-     * @param $message
-     * @param $errors
-     * @param array $extraData
-     *
-     * @return JsonResponse
-     */
-    public function validationFailedWithMessage($message, $errors, ...$extraData)
-    {
-        return $this->response(422, $message, $errors, ...$extraData);
-    }
 
     /**
      * Create Server error (500) API response.
@@ -182,6 +171,6 @@ class APIResponse implements APIResponseInterface
             $message = config('api.messages.error');
         }
 
-        return $this->response(config('api.codes.error'), $message, $data, ...$extraData);
+        return $this->response(500, $message, $data, ...$extraData);
     }
 }
