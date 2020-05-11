@@ -25,3 +25,20 @@ if (!function_exists('api')) {
         return app(ApiInterface::class)->response($status, $message, $data, ...$extraData);
     }
 }
+
+if (!function_exists('ok')) {
+
+    /**
+     * Return success response.
+     *
+     * @param string $message
+     * @param array  $data
+     * @param array  $extraData
+     *
+     * @return JsonResponse
+     */
+    function ok($message = '', $data = [], ...$extraData)
+    {
+        return api()->ok($message, $data, ...$extraData);
+    }
+}
