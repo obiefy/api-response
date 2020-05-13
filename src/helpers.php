@@ -42,3 +42,20 @@ if (!function_exists('ok')) {
         return api()->ok($message, $data, ...$extraData);
     }
 }
+
+if (!function_exists('success')) {
+
+    /**
+     * Return success response.
+     *
+     * @param string $message
+     * @param array  $data
+     * @param array  $extraData
+     *
+     * @return JsonResponse
+     */
+    function success($message = '', $data = [], ...$extraData)
+    {
+        return api()->success($message, $data, ...$extraData);
+    }
+}

@@ -32,9 +32,33 @@ class OkResponseTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_ok_response_from_success_helper_function()
+    {
+        $response = api()->success('this is message', [])->getContent();
+        $expectedResponse = [
+            'MESSAGE' => 'this is message',
+            'STATUS'  => 200,
+            'DATA'    => [],
+        ];
+        $this->assertEquals($expectedResponse, json_decode($response, 1));
+    }
+
+    /** @test */
     public function it_returns_ok_response_from_ok_helper_function()
     {
         $response = ok('this is message', [])->getContent();
+        $expectedResponse = [
+            'MESSAGE' => 'this is message',
+            'STATUS'  => 200,
+            'DATA'    => [],
+        ];
+        $this->assertEquals($expectedResponse, json_decode($response, 1));
+    }
+
+    /** @test */
+    public function it_returns_ok_response_from_success_alias_helper_function()
+    {
+        $response = success('this is message', [])->getContent();
         $expectedResponse = [
             'MESSAGE' => 'this is message',
             'STATUS'  => 200,

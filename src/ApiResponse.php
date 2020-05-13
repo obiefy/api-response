@@ -59,6 +59,21 @@ class ApiResponse implements ApiInterface
         return $this->response(200, $message, $data, ...$extraData);
     }
 
+
+    /**
+     * Create successful (200) API response.
+     *
+     * @param string $message
+     * @param array  $data
+     * @param array  $extraData
+     *
+     * @return JsonResponse
+     */
+    public function success($message = null, $data = [], ...$extraData)
+    {
+        return $this->ok($message, $data, ...$extraData);
+    }
+
     /**
      * Create Not found (404) API response.
      *
