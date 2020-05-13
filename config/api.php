@@ -22,9 +22,9 @@ return [
      * Json response's body labels.
      */
     'keys'      => [
-        'status'    => 'STATUS',
-        'message'   => 'MESSAGE',
-        'data'      => 'DATA',
+        'status'     => 'STATUS',
+        'message'    => 'MESSAGE',
+        'data'       => 'DATA',
         'data_count' => 'DATA_COUNT',
     ],
 
@@ -37,6 +37,6 @@ return [
         'validation' => 'Validation Failed please check the request attributes and try again.',
         'forbidden'  => 'You don\'t have permission to access this content.',
         'error'      => 'Server error, please try again later',
-    ]
+    ],
 
 ];
