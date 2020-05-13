@@ -59,7 +59,6 @@ class ApiResponse implements ApiInterface
         return $this->response(200, $message, $data, ...$extraData);
     }
 
-
     /**
      * Create successful (200) API response.
      *
@@ -125,7 +124,6 @@ class ApiResponse implements ApiInterface
 
         return $this->response(403, $message, $data, ...$extraData);
     }
-
 
     /**
      * Create Server error (500) API response.
