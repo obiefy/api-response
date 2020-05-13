@@ -108,11 +108,11 @@ class OkResponseTest extends TestCase
     /** @test */
     public function it_returns_count_as_a_string_if_enabled()
     {
-        config()->set('api.includeDataCount', true);
+        config()->set('api.include_data_count', true);
         config()->set('api.stringify', true);
 
         $response = api()->ok('User list', ['name1' => 'name1', 'name2' => 'name2'])->getContent();
-        $this->assertIsString(json_decode($response, 1)['DATACOUNT']);
-        $this->assertEquals(true, 2, json_decode($response, 1)['DATACOUNT']);
+        $this->assertIsString(json_decode($response, 1)['DATA_COUNT']);
+        $this->assertEquals(true, 2, json_decode($response, 1)['DATA_COUNT']);
     }
 }
