@@ -10,6 +10,12 @@ class ApiResponse implements ApiInterface
 {
     use Macroable;
 
+    const HTTP_OK = 200;
+    const HTTP_NOT_FOUND = 404;
+    const HTTP_FORBIDDEN = 403;
+    const HTTP_UNPROCESSABLE_ENTITY = 422;                                        // RFC4918
+    const HTTP_INTERNAL_SERVER_ERROR = 500;
+
     /**
      * Create API response.
      *
@@ -56,7 +62,7 @@ class ApiResponse implements ApiInterface
             $message = config('api.messages.success');
         }
 
-        return $this->response(200, $message, $data, ...$extraData);
+        return $this->response(static::HTTP_OK, $message, $data, ...$extraData);
     }
 
 
@@ -87,7 +93,7 @@ class ApiResponse implements ApiInterface
             $message = config('api.messages.notfound');
         }
 
-        return $this->response(404, $message, []);
+        return $this->response(static::HTTP_NOT_FOUND, $message, []);
     }
 
     /**
@@ -105,7 +111,7 @@ class ApiResponse implements ApiInterface
             $message = config('api.messages.validation');
         }
 
-        return $this->response(422, $message, $errors, ...$extraData);
+        return $this->response(static::HTTP_UNPROCESSABLE_ENTITY, $message, $errors, ...$extraData);
     }
 
     /**
@@ -123,7 +129,7 @@ class ApiResponse implements ApiInterface
             $message = config('api.messages.forbidden');
         }
 
-        return $this->response(403, $message, $data, ...$extraData);
+        return $this->response(static::HTTP_FORBIDDEN, $message, $data, ...$extraData);
     }
 
 
@@ -142,6 +148,6 @@ class ApiResponse implements ApiInterface
             $message = config('api.messages.error');
         }
 
-        return $this->response(500, $message, $data, ...$extraData);
+        return $this->response(static::HTTP_INTERNAL_SERVER_ERROR, $message, $data, ...$extraData);
     }
 }
