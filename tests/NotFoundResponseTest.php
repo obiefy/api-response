@@ -30,5 +30,4 @@ class NotFoundResponseTest extends TestCase
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
-    
 }

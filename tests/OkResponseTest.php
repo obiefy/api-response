@@ -79,7 +79,6 @@ class OkResponseTest extends TestCase
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
 
-
     /** @test */
     public function it_returns_count_if_enabled_and_countable()
     {

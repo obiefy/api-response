@@ -31,16 +31,16 @@ class ResponseTest extends TestCase
     public function user_can_edit_default_response_keys()
     {
         config()->set('api.keys', [
-            'status' => 'newStatus',
+            'status'  => 'newStatus',
             'message' => 'newMessage',
-            'data' => 'newData',
+            'data'    => 'newData',
         ]);
 
         $response = api()->ok()->getContent();
         $expectedResponse = [
-            'newStatus' => 200,
+            'newStatus'  => 200,
             'newMessage' => config('api.messages.success'),
-            'newData' => [],
+            'newData'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
@@ -68,9 +68,9 @@ class ResponseTest extends TestCase
     {
         $response = api(403, 'Forbidden response message', [])->getContent();
         $expectedResponse = [
-            'STATUS' => 403,
+            'STATUS'  => 403,
             'MESSAGE' => 'Forbidden response message',
-            'DATA' => [],
+            'DATA'    => [],
         ];
 
         $this->assertEquals($expectedResponse, json_decode($response, 1));
@@ -83,15 +83,15 @@ class ResponseTest extends TestCase
         $response = api()->response(
             200,
             'New Response',
-            ['name' => 'Joe Doe'],
-            ['code' => 30566],
+            ['name'      => 'Joe Doe'],
+            ['code'      => 30566],
             ['reference' => 'ERROR-2019-09-14']
         )->getContent();
         $expectedResponse = [
-            'STATUS' => 200,
-            'MESSAGE' => 'New Response',
-            'DATA' => ['name' => 'Joe Doe'],
-            'code' => 30566,
+            'STATUS'    => 200,
+            'MESSAGE'   => 'New Response',
+            'DATA'      => ['name' => 'Joe Doe'],
+            'code'      => 30566,
             'reference' => 'ERROR-2019-09-14',
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
@@ -100,8 +100,8 @@ class ResponseTest extends TestCase
         $response = API::response(
             200,
             'New Response',
-            ['name' => 'Joe Doe'],
-            ['code' => 30566],
+            ['name'      => 'Joe Doe'],
+            ['code'      => 30566],
             ['reference' => 'ERROR-2019-09-14']
         )->getContent();
         $this->assertEquals($expectedResponse, json_decode($response, 1));
@@ -110,8 +110,8 @@ class ResponseTest extends TestCase
         $response = api(
             200,
             'New Response',
-            ['name' => 'Joe Doe'],
-            ['code' => 30566],
+            ['name'      => 'Joe Doe'],
+            ['code'      => 30566],
             ['reference' => 'ERROR-2019-09-14']
         )->getContent();
         $this->assertEquals($expectedResponse, json_decode($response, 1));

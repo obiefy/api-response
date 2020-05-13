@@ -6,7 +6,6 @@ use Illuminate\Http\JsonResponse;
 
 interface ApiInterface
 {
-
     /**
      * Create API response.
      *
