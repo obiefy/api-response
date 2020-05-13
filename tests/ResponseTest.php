@@ -5,13 +5,25 @@ namespace Obiefy\Tests;
 use Illuminate\Http\JsonResponse;
 use Obiefy\API\Facades\API;
 use Obiefy\API\Tests\TestCase;
+use stdClass;
 
 class ResponseTest extends TestCase
 {
     /** @test */
-    public function it_returns_response_object()
+    public function it_returns_response_object_with_array()
     {
         $response = API::response(200, 'New Response', []);
+        $this->assertInstanceOf(JsonResponse::class, $response);
+    }
+
+    /** @test */
+    public function it_returns_response_object_with_object()
+    {
+        $data = new stdClass();
+        $data->foo = 'foo';
+        $data->bar = 'bar';
+        $data->baz = 'baz';
+        $response = API::response(200, 'New Response', $data);
         $this->assertInstanceOf(JsonResponse::class, $response);
     }
 
@@ -108,8 +120,8 @@ class ResponseTest extends TestCase
         $response = api()->response(
             200,
             'New Response',
-            ['name'      => 'Joe Doe'],
-            ['code'      => 30566, 'reference' => 'ERROR-2019-09-14']
+            ['name' => 'Joe Doe'],
+            ['code' => 30566, 'reference' => 'ERROR-2019-09-14']
         )->getContent();
         $this->assertEquals($expectedResponse, json_decode($response, 1));
     }
