@@ -68,7 +68,8 @@ class ResponseTest extends TestCase
     public function it_returns_extra_parameters()
     {
         // using the api()->response()
-        $response = api()->response(200,
+        $response = api()->response(
+            200,
             'New Response',
             ['name'      => 'Joe Doe'],
             ['code'      => 30566],
@@ -84,7 +85,8 @@ class ResponseTest extends TestCase
         $this->assertEquals($expectedResponse, json_decode($response, 1));
 
         // using the facade
-        $response = API::response(200,
+        $response = API::response(
+            200,
             'New Response',
             ['name'      => 'Joe Doe'],
             ['code'      => 30566],
@@ -93,7 +95,8 @@ class ResponseTest extends TestCase
         $this->assertEquals($expectedResponse, json_decode($response, 1));
 
         // using api() directly
-        $response = api(200,
+        $response = api(
+            200,
             'New Response',
             ['name'      => 'Joe Doe'],
             ['code'      => 30566],
@@ -102,7 +105,8 @@ class ResponseTest extends TestCase
         $this->assertEquals($expectedResponse, json_decode($response, 1));
 
         // extra data as part of the same array
-        $response = api()->response(200,
+        $response = api()->response(
+            200,
             'New Response',
             ['name'      => 'Joe Doe'],
             ['code'      => 30566, 'reference' => 'ERROR-2019-09-14']
