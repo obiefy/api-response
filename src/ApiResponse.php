@@ -65,7 +65,6 @@ class ApiResponse implements ApiInterface
         return $this->response(static::HTTP_OK, $message, $data, ...$extraData);
     }
 
-
     /**
      * Create successful (200) API response.
      *
@@ -131,7 +130,6 @@ class ApiResponse implements ApiInterface
 
         return $this->response(static::HTTP_FORBIDDEN, $message, $data, ...$extraData);
     }
-
 
     /**
      * Create Server error (500) API response.
