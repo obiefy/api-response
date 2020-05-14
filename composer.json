@@ -49,7 +49,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                    "Obiefy\\API\\APIServiceProvider"
+                    "Obiefy\\API\\ApiResponseServiceProvider"
             ],
             "aliases": {
                 "API": "Obiefy\\API\\Facades\\API"
