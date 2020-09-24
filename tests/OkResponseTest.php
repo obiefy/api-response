@@ -84,7 +84,7 @@ class OkResponseTest extends TestCase
     {
         config()->set('api.include_data_count', true);
         $response = api()->ok('User list', ['name1' => 'name1', 'name2' => 'name2'])->getContent();
-        $this->assertEquals(true, array_key_exists('DATA_COUNT', json_decode($response)));
+        $this->assertEquals(true, property_exists(json_decode($response), 'DATA_COUNT'));
         $this->assertEquals(2, json_decode($response, 1)['DATA_COUNT']);
     }
 
@@ -93,7 +93,7 @@ class OkResponseTest extends TestCase
     {
         config()->set('api.include_data_count', true);
         $response = api()->ok('User list', [])->getContent();
-        $this->assertEquals(false, array_key_exists('DATA_COUNT', json_decode($response)));
+        $this->assertEquals(false, property_exists(json_decode($response), 'DATA_COUNT'));
     }
 
     /** @test */
@@ -102,7 +102,7 @@ class OkResponseTest extends TestCase
         config()->set('api.include_data_count', true);
         config()->set('api.keys.data_count', 'count_of_data');
         $response = api()->ok('User list', ['name1' => 'name1', 'name2' => 'name2'])->getContent();
-        $this->assertEquals(true, array_key_exists('count_of_data', json_decode($response)));
+        $this->assertEquals(true, property_exists(json_decode($response), 'count_of_data'));
     }
 
     /** @test */
