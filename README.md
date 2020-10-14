@@ -17,7 +17,7 @@ Simple Laravel API response wrapper.
 
 2. Register the package service provider to the providers array in `app.php` file:
 
-    `Obiefy\API\APIServiceProvider::class`
+    `Obiefy\API\ApiResponseServiceProvider::class`
 
 3. Register the package facade alias to the aliases array in `app.php` file:
 
