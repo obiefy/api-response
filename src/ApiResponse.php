@@ -59,7 +59,7 @@ class ApiResponse implements ApiInterface
     public function ok($message = null, $data = [], ...$extraData)
     {
         if (is_null($message)) {
-            $message = trans('api-response::api.messages.success');
+            $message = trans('api-response::messages.success');
         }
 
         return $this->response(static::HTTP_OK, $message, $data, ...$extraData);
