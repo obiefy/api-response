@@ -10,7 +10,7 @@ class ErrorResponseTest extends TestCase
         $response = api()->error()->getContent();
         $expectedResponse = [
             'STATUS'  => 500,
-            'MESSAGE' => config('api.messages.error'),
+            'MESSAGE' => trans('api-response::messages.error'),
             'DATA'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));

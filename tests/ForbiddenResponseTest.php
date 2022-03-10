@@ -10,7 +10,7 @@ class ForbiddenResponseTest extends TestCase
         $response = api()->forbidden()->getContent();
         $expectedResponse = [
             'STATUS'  => 403,
-            'MESSAGE' => config('api.messages.forbidden'),
+            'MESSAGE' => trans('api-response::messages.forbidden'),
             'DATA'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));

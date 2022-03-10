@@ -59,7 +59,7 @@ class ApiResponse implements ApiInterface
     public function ok($message = null, $data = [], ...$extraData)
     {
         if (is_null($message)) {
-            $message = config('api.messages.success');
+            $message = trans('api-response::api.messages.success');
         }
 
         return $this->response(static::HTTP_OK, $message, $data, ...$extraData);
@@ -89,7 +89,7 @@ class ApiResponse implements ApiInterface
     public function notFound($message = null)
     {
         if (is_null($message)) {
-            $message = config('api.messages.notfound');
+            $message = trans('api-response::messages.notfound');
         }
 
         return $this->response(static::HTTP_NOT_FOUND, $message, []);
@@ -107,7 +107,7 @@ class ApiResponse implements ApiInterface
     public function validation($message = null, $errors = [], ...$extraData)
     {
         if (is_null($message)) {
-            $message = config('api.messages.validation');
+            $message = trans('api-response::messages.validation');
         }
 
         return $this->response(static::HTTP_UNPROCESSABLE_ENTITY, $message, $errors, ...$extraData);
@@ -125,7 +125,7 @@ class ApiResponse implements ApiInterface
     public function forbidden($message = null, $data = [], ...$extraData)
     {
         if (is_null($message)) {
-            $message = config('api.messages.forbidden');
+            $message = trans('api-response::messages.forbidden');
         }
 
         return $this->response(static::HTTP_FORBIDDEN, $message, $data, ...$extraData);
@@ -143,7 +143,7 @@ class ApiResponse implements ApiInterface
     public function error($message = null, $data = [], ...$extraData)
     {
         if (is_null($message)) {
-            $message = config('api.messages.error');
+            $message = trans('api-response::messages.error');
         }
 
         return $this->response(static::HTTP_INTERNAL_SERVER_ERROR, $message, $data, ...$extraData);

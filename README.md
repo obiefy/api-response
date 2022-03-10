@@ -199,10 +199,10 @@ If you need to customize the default messages or the json response labels, you c
 
 |method| default status code  | change code |  message  |
 |--|--| -- | --- |
-|`ok()`|  200 |`config('api.codes.success)` | `config('api.messages.success)`
-|`notFound()`|  404 |`config('api.codes.notfound)` | `config('api.messages.notfound)`
-|`validation()`|  422 |`config('api.codes.validation)` | `config('api.messages.validation)`
-|`error()`|  500 |`config('api.codes.error)` | `config('api.messages.error)`
+|`ok()`|  200 |`config('api.codes.success)` | `trans('api-response::messages.success)`
+|`notFound()`|  404 |`config('api.codes.notfound)` | `trans('api-response::messages.notfound)`
+|`validation()`|  422 |`config('api.codes.validation)` | `trans('api-response::messages.validation)`
+|`error()`|  500 |`config('api.codes.error)` | `trans('api-response::messages.error)`
 
 ### Matching Status Codes
 By default, all API responses return a 200 OK HTTP status header. If you'd like the status header to match the Response's status, set the `matchstatus` configuration to `true`

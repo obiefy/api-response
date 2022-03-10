@@ -28,6 +28,8 @@ class ApiResponseServiceProvider extends ServiceProvider
     {
         $this->setupConfig();
 
+        $this->setupTranslations();
+
         $this->registerHelpers();
 
         $this->publishes([
@@ -52,5 +54,10 @@ class ApiResponseServiceProvider extends ServiceProvider
         if (file_exists($helperFile = __DIR__.'/helpers.php')) {
             require_once $helperFile;
         }
+    }
+
+    private function setupTranslations()
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'api-response');
     }
 }
