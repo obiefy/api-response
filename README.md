@@ -41,9 +41,9 @@ use API;
 
 public function index()
 {
-    $users = User::all();
+    $users = User::latest()->take(5)->get();
 
-    return API::response(200, 'users list', $users);
+    return API::response(200, 'Latest 5 Users', $users);
 }
 ```
 Note: If you decide not to register the service provider and the facade, alias then you need to include `use Obiefy\API\Facades\API;` at the top of the class, but we recommend not to.
@@ -52,9 +52,9 @@ Note: If you decide not to register the service provider and the facade, alias t
 ```php
 public function index()
 {
-    $users = User::all();
+    $users = User::latest()->take(5)->get();
 
-    return api()->response(200, 'users list', $users);
+    return api()->response(200, 'Latest 5 Users', $users);
 }
 ```
 
@@ -73,18 +73,18 @@ use API;
 
 public function index()
 {
-    $users = User::all();
+    $users = User::latest()->take(5)->get();
 
-    return API::response(200, 'Users list', $users);
+    return API::response(200, 'Latest 5 Users', $users);
 }
 ```
 This is the result:
 ```json
 {
     "STATUS": 200,
-    "MESSAGE": "Users list",
+    "MESSAGE": "Latest 5 Users",
     "DATA": [
-        {"name": "Obay Hamed"}
+        {"name": "Obay Adam", ...}
     ]
 }
 ```
@@ -96,20 +96,20 @@ As you can see in the below example, we are calling the `api()` helper and we ar
 ```php
 public function index()
 {
-    $users = User::all();
+    $users = User::latest()->take(5)->get();
     $code = ['code' => 30566];
     $error = ['reference' => 'ERROR-2019-09-14'];
 
-    return api()->response(200, 'Users list', $users, $code, $error);
+    return api()->response(200, 'Latest 5 Users', $users, $code, $error);
 }
 ```
 This is the result:
 ```json
 {
     "STATUS": 200,
-    "MESSAGE": "Users list",
+    "MESSAGE": "Latest 5 Users",
     "DATA": [
-        {"name": "Obay Hamed"}
+        {"name": "Obay Adam", ...}
     ],
     "code": 30566,
     "error": "ERROR-2019-09-14"
@@ -123,18 +123,18 @@ Check the below code example.
 ```php
 public function index()
 {
-    $users = User::all();
+    $users = User::latest()->take(5)->get();
 
-    return api(200, 'Users list', $users);
+    return api(200, 'Latest 5 Users', $users);
 }
 ```
 This is the result:
 ```json
 {
     "STATUS": 200,
-    "MESSAGE": "users list",
+    "MESSAGE": "Latest 5 Users",
     "DATA": [
-        {"name": "Obay Hamed"}
+        {"name": "Obay Adam", ...}
     ]
 }
 ```
@@ -160,7 +160,7 @@ Result:
 Or you could pass to the function a custom message and the data you need. In this case, as mentioned before, the `ok()` status code will be defaulted to 200.
 
 ```php
-$users = User::all();
+$users = User::latest()->take(5)->get();
 
 return api()->ok("User list", $users);
 ```
@@ -170,7 +170,7 @@ Result:
     "STATUS": 200,
     "MESSAGE": "User list",
     "DATA": [
-        {"name": "Obay Hamed"}
+        {"name": "Obay Adam", ...}
     ]
 }
 ```
