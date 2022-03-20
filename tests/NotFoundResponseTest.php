@@ -2,7 +2,6 @@
 
 namespace Obiefy\Tests;
 
-use Obiefy\API\Facades\API;
 use Obiefy\API\Tests\TestCase;
 
 class NotFoundResponseTest extends TestCase
