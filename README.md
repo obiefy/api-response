@@ -1,6 +1,6 @@
 # Laravel API Response
 
-![Build Status](https://travis-ci.org/obiefy/api-response.svg?branch=master)
+![Packagist Downloads](https://img.shields.io/packagist/dt/obiefy/api-response)
 [![StyleCI](https://github.styleci.io/repos/206981157/shield?branch=master)](https://github.styleci.io/repos/206981157)
 ![Packagist](https://img.shields.io/packagist/l/obiefy/api-response) ![Packagist Version](https://img.shields.io/packagist/v/obiefy/api-response)
 
