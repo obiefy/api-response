@@ -35,7 +35,7 @@ class ValidationResponseTest extends TestCase
         $response = api()->validation()->getContent();
         $expectedResponse = [
             'STATUS'  => 422,
-            'MESSAGE' => config('api.messages.validation'),
+            'MESSAGE' => trans('api-response::messages.validation'),
             'DATA'    => [],
         ];
 

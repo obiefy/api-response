@@ -23,7 +23,7 @@ class NotFoundResponseTest extends TestCase
     {
         $response = api()->notFound()->getContent();
         $expectedResponse = [
-            'MESSAGE' => config('api.messages.notfound'),
+            'MESSAGE' => trans('api-response::messages.notfound'),
             'STATUS'  => 404,
             'DATA'    => [],
         ];

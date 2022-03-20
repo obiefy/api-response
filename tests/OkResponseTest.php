@@ -72,7 +72,7 @@ class OkResponseTest extends TestCase
     {
         $response = api()->ok()->getContent();
         $expectedResponse = [
-            'MESSAGE' => config('api.messages.success'),
+            'MESSAGE' => trans('api-response::messages.success'),
             'STATUS'  => 200,
             'DATA'    => [],
         ];

@@ -39,7 +39,7 @@ class ResponseTest extends TestCase
         $response = api()->ok()->getContent();
         $expectedResponse = [
             'newStatus'  => 200,
-            'newMessage' => config('api.messages.success'),
+            'newMessage' => trans('api-response::messages.success'),
             'newData'    => [],
         ];
         $this->assertEquals($expectedResponse, json_decode($response, 1));
