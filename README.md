@@ -98,7 +98,7 @@ public function index()
 {
     $users = User::latest()->take(5)->get();
     $code = ['code' => 30566];
-    $error = ['reference' => 'ERROR-2019-09-14'];
+    $error = ['error' => 'ERROR-2019-09-14'];
 
     return api()->response(200, 'Latest 5 Users', $users, $code, $error);
 }
